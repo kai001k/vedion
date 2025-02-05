@@ -1,7 +1,31 @@
-<video autoplay loop controls 
-  style = "width:100%;
-  height:auto;">
-  <source 
-  src="ROADIES PROMOTION (ITM).mp4"
-  type="video/mp4">
-</video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Autoplay & Download</title>
+    <style>
+        body { margin: 0; background: black; text-align: center; }
+        video { width: 100vw; height: 100vh; object-fit: cover; }
+        #download { 
+            display: none; 
+            position: absolute; 
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; padding: 10px 20px; border-radius: 5px; 
+            font-size: 20px; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay playsinline>
+        <source src="ROADIES PROMOTION (ITM).mp4" type="video/mp4">
+    </video>
+    <a id="download" href="YOUR_PDF.pdf" download>Download PDF</a>
+
+    <script>
+        document.getElementById("video").addEventListener("ended", function() {
+            document.getElementById("download").style.display = "block";
+        });
+    </script>
+</body>
+</html>
