@@ -3,29 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Autoplay & Download</title>
+    <title>Auto-Play Video</title>
     <style>
-        body { margin: 0; background: black; text-align: center; }
-        video { width: 100vw; height: 100vh; object-fit: cover; }
-        #download { 
-            display: none; 
-            position: absolute; 
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: white; padding: 10px 20px; border-radius: 5px; 
-            font-size: 20px; font-weight: bold;
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        #download-btn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <video id="video" autoplay playsinline>
+
+    <video id="myVideo" autoplay muted playsinline>
         <source src="ROADIES PROMOTION (ITM).mp4" type="video/mp4">
+        Your browser does not support the video tag.
     </video>
-    <a id="download" href="YOUR_PDF.pdf" download>Download PDF</a>
+
+    <button id="download-btn" onclick="downloadPDF()">Download PDF</button>
 
     <script>
-        document.getElementById("video").addEventListener("ended", function() {
-            document.getElementById("download").style.display = "block";
-        });
+        var video = document.getElementById("myVideo");
+        var downloadBtn = document.getElementById("download-btn");
+
+        // Show button when video ends
+        video.onended = function() {
+            downloadBtn.style.display = "block";
+        };
+
+        // Function to download PDF
+        function downloadPDF() {
+            window.location.href = "your-file.pdf";  // Replace with your PDF file URL
+        }
     </script>
+
 </body>
 </html>
